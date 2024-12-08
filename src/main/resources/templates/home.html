@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+</head>
+<body>
+<h1>Bienvenido a la página de inicio</h1>
+
+<!-- Mostrar datos del usuario autenticado -->
+<h2>Bienvenido, <span th:text="${nombre}"></span> <span th:text="${apellido}"></span>!</h2>
+<p>Rol: <span th:text="${rol}"></span></p>
+
+<!-- Enlace para cerrar sesión -->
+<a href="/logout">Cerrar sesión</a>
+
+<!-- Botón para redirigir a la administración de usuarios -->
+<br>
+<a href="/adminusuarios">
+    <button>Ir a Administrar Usuarios</button>
+</a>
+</body>
+</html>

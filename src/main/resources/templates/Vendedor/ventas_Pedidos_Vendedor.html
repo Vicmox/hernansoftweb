@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de ventas</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/ventas_Vendedor.css">
+    <link rel="shortcut icon" href="../../img/HDITOPUB-LOGO-BLANCO.ico" type="image/x-icon">
+</head>
+<body>
+        <!-- Header con campana de notificaciones -->
+        <header class="d-flex justify-content-end align-items-center text-black px-2">
+        <!-- Ícono de la campana -->
+            <i class="fas fa-bell notification-icon mx-2"></i>
+        <!-- Botón de cerrar sesión -->
+            <button id="logoutButton" class="btn btn-dark btn-sm mx-2">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+    </header>
+    <!-- Sidebar con opciones de navegación --> 
+    <!-- Sidebar (ubicado a la derecha) -->
+    <div class="sidebar">
+        <div class="container-fluid text-center py-4">
+        <!-- Logo de HernanditoPublicidad -->
+            <img src="../../img/HDITOPUB-LOGO-BLANCO.png" alt="HernanditoPublicidad" class="logo">
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="ventas_home">
+                    <i class="fas fa-home"></i> Home
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="ventas_Vendedor">
+                    <i class="fas fa-cash-register"></i> Ventas
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#clientesMenu" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="clientesMenu">
+                    <i class="fas fa-users"></i> Clientes
+                </a>
+                <ul class="collapse list-unstyled ms-3" id="clientesMenu">
+                    <li>
+                        <a class="nav-link" href="ventas_Clientes_Vendedor">
+                            <i class="fas fa-list"></i>Lista de Clientes
+                        </a>
+                    </li>
+                    <li><a class="nav-link" href="ventas_Clientes_Cotizaciones_Vendedor">
+                        <i class="fa-solid fa-clipboard"></i>Lista Cotizaciones
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="ventas_Cotizaciones_Vendedor">
+                    <i class="fas fa-file-invoice"></i> Cotizaciones
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="ventas_Pedidos_Vendedor">
+                    <i class="fas fa-box"></i> Pedidos
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+        <!-- Listado de Pedidos -->
+        <div class="container py-4">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Listado de Pedidos</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col"><input type="checkbox"></th>
+                                <th scope="col">No Pedido</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Cliente</th>
+                                <th scope="col">Estado Actual</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Encargado</th>
+                                <th scope="col"><b>X</b></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>12345</td>
+                                <td>27/11/2024</td>
+                                <td>Juan Pérez</td>
+                                <td>
+                                        <select class="form-select">
+                                            <option value="">Seleccione</option>
+                                            <option value="Atrasado">Atrasado</option>
+                                            <option value="Pagado">Pagado</option>
+                                            <option value="Pendiente">Pendiente</option>
+                                            <option value="En Proceso">En Proceso</option>
+                                        </select>
+                                </td>
+                                <td>$150.000</td>
+                                <td>Juan Gonzalez</td>
+                                <td><i class="fa fa-trash"></i></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>12346</td>
+                                <td>27/11/2024</td>
+                                <td>María López</td>
+                                <td>
+                                    <select class="form-select">
+                                        <option value="">Seleccione</option>
+                                        <option value="Atrasado">Atrasado</option>
+                                        <option value="Pagado">Pagado</option>
+                                        <option value="Pendiente">Pendiente</option>
+                                        <option value="En Proceso">En Proceso</option>
+                                    </select>
+                                </td>
+                                <td>$200.000</td>
+                                <td>María Perez</td>
+                                <td><i class="fa fa-trash"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <button class="btn btn-primary" id="btn-visualizar">Visualizar</button>
+        </div>
+        <br>
+         <!-- Detalle del Pedido -->
+        <div class="container py-4">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0" id="noPedido">Pedido No. ####</h5>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="comprador" class="form-label">Comprador</label>
+                            <input type="text" class="form-control" id="comprador" placeholder="Nombre del comprador">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="correo" class="form-label">Correo</label>
+                            <input type="email" class="form-control" id="correo" placeholder="Correo del comprador">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="metodo_de_pago" class="form-label">Método de pago</label>
+                            <select class="form-select">
+                                <option value="">Seleccione</option>
+                                <option value="contado">Contado</option>
+                                <option value="credito">Crédito</option>
+                                <option value="mixto">Mixto</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <br/>
+                            <label for="Monto_abonado" class="form-label">Monto abonado</label>
+                            <input type="text" class="form-control" id="Monto_abonado" placeholder="Monto abonado">
+                        </div>
+                        <div class="col-md-4">
+                            <br/>
+                            <label for="numero_de_Cuotas" class="form-label">N° de Cuotas</label>
+                            <select class="form-select">
+                                <option value="">Seleccione</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <br/>                            
+                            <label for="fecha" class="form-label">Fecha Facturación</label>
+                            <input type="date" class="form-control" id="fecha">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="direccion" class="form-label">Dirección</label>
+                            <input type="text" class="form-control" id="direccion" placeholder="Dirección del comprador">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="terminos" class="form-label">Fecha de cobros💲</label>
+                            <select id="fecha_cobros" class="form-select" required>
+                                <option value="">Seleccione una fecha de cobro</option>
+                                <option value="1">1 de cada mes</option>
+                                    <option value="5">5 de cada mes</option>
+                                    <option value="10">10 de cada mes</option>
+                                    <option value="15">15 de cada mes</option>
+                                    <option value="20">20 de cada mes</option>
+                                    <option value="25">25 de cada mes</option>
+                                    <option value="ultimo">Último día del mes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <br/>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Producto/Servicio</th>
+                                    <th scope="col">Código/SKU</th>
+                                    <th scope="col">Descripción</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Valor Unitario</th>
+                                    <th scope="col">Monto</th>
+                                    <th scope="col"><i class="fa fa-trash"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <<td>1</td>
+                                    <td>
+                                        <select class="form-select">
+                                            <option value="">Seleccione</option>
+                                            <option value="Atrasado">Produto A</option>
+                                            <option value="Pagado">Producto B</option>
+                                            <option value="Pendiente">Producto C</option>
+                                        </select>
+                                    </td>
+                                    <td>SKU001</td>
+                                    <td><textarea class="form-control" id="mensaje" rows="2"></textarea></td>
+                                    <td><input type="text" id="cantidad" class="form-control" required></td>
+                                    <td><input type="text" id="valor_unitario" class="form-control" required></td>
+                                    <td>$200.00</td>
+                                    <td><i class="fa fa-trash"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mensaje" class="form-label">Mensaje/Anotación</label>
+                        <textarea class="form-control" id="mensaje" rows="3" placeholder="Notas adicionales"></textarea>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="estado" class="form-label">Estado</label>
+                            <select class="form-select" id="estado">
+                                <option>Seleccionar</option>
+                                <option>Cancelado</option>
+                                <option>Pendiente</option>
+                                <option>Enviado</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <b><label for="totaltxt" class="form-label">Total</label><br></b>
+                            <label for="total" class="form-label" id="total">200000</label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="terminos" class="form-label">Abonado</label>
+                            <input type="text" class="form-control" id="abonado" placeholder="0000000">
+                        </div>
+                        <div class="col-md-4">
+                            <br>
+                            <label for="saldo" class="form-label">Saldo Adeudado</label>
+                            <input type="text" class="form-control" id="saldo" placeholder="0000000">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" id="btnregistrar">Registrar</button>
+                    <button type="button" class="btn btn-secondary" id="btnimprimir">Imprimir</button>
+                    <button type="button" class="btn btn-warning" id="btnlimpiar">Limpiar</button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="js/vendedor/ventas_Pedidos_Vendedor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

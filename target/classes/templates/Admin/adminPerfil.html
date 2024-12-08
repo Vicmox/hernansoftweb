@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración de Usuarios</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/ventas_Vendedor.css">
+    <link rel="shortcut icon" href="img/HDITOPUB-LOGO-BLANCO.ico" type="image/x-icon">
+</head>
+<body>
+<!-- Header con campana de notificaciones -->
+<header class="d-flex justify-content-end align-items-center text-black px-2">
+    <a class="profile-icon notification-icon" th:href="@{/adminusuarios}">
+        <i class="bi bi-person-fill"></i>
+    </a>
+<!-- Ícono de la campana -->
+    <i class="fas fa-bell notification-icon mx-2"></i>
+<!-- Botón de cerrar sesión -->
+    <button id="logoutButton" class="btn btn-dark btn-sm mx-2">
+        <i class="fas fa-sign-out-alt"></i>
+    </button>
+</header>
+<!-- Sidebar (ubicado a la izquierda) -->
+<div class="sidebar">
+    <div class="container-fluid text-center py-4">
+        <img src="img/HDITOPUB-LOGO-BLANCO.ico" alt="HernanditoPublicidad" class="logo">
+    </div>
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/admin_Gestion_Clientes}">
+                <i class="fas fa-users"></i> Clientes
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/admin_Gestion_Roles}">
+                <i class="fas fa-file-invoice"></i> Usuarios "Roles"
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/admin_Cancelacion_Pedidos}">
+                <i class="fas fa-box"></i> Pedidos
+            </a>
+        </li>
+    </ul>
+</div>
+</header>
+<!-- Sidebar (ubicado a la izquierda) -->
+<div class="sidebar">
+    <div class="container-fluid text-center py-4">
+        <img src="img/HDITOPUB-LOGO-BLANCO.png" alt="HernanditoPublicidad" class="logo">
+    </div>
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/admin_Gestion_Clientes}">
+                <i class="fas fa-users"></i> Clientes
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/admin_Gestion_Roles}">
+                <i class="fas fa-file-invoice"></i> Usuarios "Roles"
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/admin_Cancelacion_Pedidos}">
+                <i class="fas fa-box"></i> Pedidos
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="container py-4">
+    <div class="card shadow-sm">
+        <!-- Formulario para realizar factura -->
+        <div class="card-header bg-dark text-white">
+            <h5 class="mb-0">Información Admin</h5>
+        </div>
+        <div class="card-body">
+            <form id="billing-form" th:action="@{/editarPerfilAdmin}" th:object="${usuario}" method="post">
+                <!-- Fila 1: Cliente, Correo, Dirección -->
+                <div class="row" id="form-row">
+                    <!-- Nombre -->
+                    <div class="col-md-3 mb-3">
+                        <label for="user_nombre_input" class="form-label">Nombre</label>
+                        <input th:field="*{nombre}" type="text" class="form-control" placeholder="Ingresar Nombre" id="user_nombre_input" required>
+                    </div>
+                    <!-- Apellido -->
+                    <div class="col-md-3 mb-3">
+                        <label for="user_apellido_input" class="form-label">Apellido</label>
+                        <input th:field="*{apellido}" type="text" class="form-control" placeholder="Ingresar Apellido" id="user_apellido_input" required>
+                    </div>
+                    <!-- Tipo de Identificación -->
+                    <div class="col-md-3 mb-3">
+                        <label for="user_tipoIdentificacion_input" class="form-label">Tipo de Identificación</label>
+                        <select th:field="*{tipoIdentificacion}" class="form-select" id="user_tipoIdentificacion_input" required>
+                            <option value="" disabled hidden selected>Selecciona un tipo</option>
+                            <option value="CC">CC</option>
+                            <option value="CE">CE</option>
+                            <option value="TI">TI</option>
+                        </select>
+                    </div>
+                    <!-- Número de Identificación -->
+                    <div class="col-md-3 mb-3">
+                        <label for="user_identificacion_input" class="form-label">Número de Identificación</label>
+                        <input th:field="*{identificacion}" type="text" class="form-control" placeholder="Ingresar Identificación" id="user_identificacion_input" required readonly >
+                    </div>
+                    <!-- Teléfono -->
+                    <div class="col-md-3 mb-3">
+                        <label for="user_telefono_input" class="form-label">Teléfono</label>
+                        <input th:field="*{telefono}" type="text" class="form-control" placeholder="Ingresar Teléfono" id="user_telefono_input" required>
+                    </div>
+                    <!-- Correo Electrónico -->
+                    <div class="col-md-3 mb-3">
+                        <label for="user_correo_input" class="form-label">Correo Electrónico</label>
+                        <input th:field="*{correo}" type="email" class="form-control" placeholder="Ingresar Correo Electrónico" id="user_correo_input" required>
+                    </div>
+                    <!-- Dirección -->
+                    <div class="col-md-3 mb-3">
+                        <label for="user_direccion_input" class="form-label">Dirección</label>
+                        <input th:field="*{direccion}" type="text" class="form-control" placeholder="Ingresar Dirección" id="user_direccion_input" required>
+                    </div>
+                    <!-- Contraseña -->
+                    <div class="col-md-3 mb-3">
+                        <label for="user_contrasena_input" class="form-label">Contraseña</label>
+                        <input th:field="*{contrasena}" type="text" class="form-control" placeholder="Ingresar Contraseña" id="user_contrasena_input" required>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="user_rol_input" class="form-label">ROL</label>
+                        <input th:field="*{rol}" type="text" class="form-control" placeholder="Ingresar Rol" id="user_rol_input" required readonly>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <button type="submit" name="Editar" value="Editar" class="btn btn-primary mt-3" id="btnRegistrar">Actualizar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Scripts adicionales -->
+<!-- <script src="../../static/js/admin/adminModule.js"></script> -->
+<script src="js/vendedor/ventasVendedor.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

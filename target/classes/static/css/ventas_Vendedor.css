@@ -1,0 +1,230 @@
+/* Estilo para el sidebar */
+.sidebar {
+    position: fixed; /* Fija el sidebar en el lado izquierdo */
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 180px; /* Este es el ancho del sidebar.*/
+    background-color: #000000fe;
+    color: black;
+    padding-top: 20px;
+    transition: 0.3s ease;
+}
+
+
+/* Estilo para el logo en el sidebar */
+.sidebar .logo {
+    width: 80%; /* Ajusta el tamaño del logo según sea necesario */
+    margin-bottom: 20px;
+}
+
+/* Estilo para los elementos del menú */
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Estilo para  los elementos del   menú */
+.sidebar .nav-item {
+    margin: 5px 0;
+}
+
+/* Estilo para los elementos del menú con un link */
+.sidebar .nav-link {
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+/* Estilo para los elementos del menú con un link seleccionado */
+.sidebar .nav-link:hover {
+    background-color: #002a8d;
+}
+
+/* Estilo para los elementos del menú con iconos */
+.sidebar .nav-link i {
+    margin-right: 10px;
+}
+
+
+/* Estilo para el header */
+.header {
+    position: sticky; /* Permite que el header se quede fijo al hacer scroll */
+    top: 0;
+    display: flex; /* Alinea los elementos en una fila */
+    justify-content: flex-end; /* Alinea los elementos al final (a la derecha) */
+    align-items: center; /* Centra los elementos verticalmente */
+    background-color: #6c757d; /* Color de fondo gris oscuro */
+    padding: 10px 20px; /* Espaciado dentro del header */
+    color: rgb(0, 0, 0); /* Color del texto e íconos */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
+}
+
+.mi-clase-gris-oscuro {
+    background-color: #bebaba;
+}
+
+/* Estilo para el ícono de la campana */
+.notification-icon {
+    font-size: 1.5rem; /* Tamaño del ícono */
+    color: rgb(0, 0, 0); /* Color del ícono */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Efecto suave para el cambio de color */
+    margin-right: 0.5rem;
+}
+.profile-icon {
+    font-size: 1.7rem;
+}
+
+/* Estilo cuando el mouse pasa sobre el ícono */
+.notification-icon:hover {
+    color: #033ff3; /* Cambia el color a un amarillo anaranjado (puedes elegir otro color) */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Sombra sutil cuando se pasa el mouse */
+}
+
+body {
+    background-color: #fff;
+    padding-top: 10px;
+}
+
+/* Estilo para el encabezado del formulario */
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 10px;
+}
+
+.card-body {
+    padding: 10px 100px;
+    border-color: black;
+}
+
+.card-header{
+    background-color: #343a40;
+    color: white;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+}
+/* Espacio entre el sidebar y el formulario */
+.container {
+    margin-left: 205px; /* El valor debe ser mayor que el ancho del sidebar (250px + algo de margen) */
+}
+
+.form-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* También puedes agregar padding si lo prefieres */
+.container .py-4 {
+    padding-left: 20px;
+    margin-top: 20px; /* Ajusta según el espacio que quieras entre el sidebar y el formulario */
+}
+
+/* Margen entre tabla y otros elementos */
+.table-responsive {
+    margin-top: 20px;
+}
+
+/* Bordes redondeados */
+table {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Ajustes en encabezados */
+.table thead {
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Centrando celdas */
+.table td, .table th {
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* Alternar colores para filas */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f8f9fa;
+}
+
+/* Ajuste general */
+.container {
+    background-color: #f8f9fa; /* Fondo suave */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para realce */
+    padding: 20px;
+}
+
+/* Mensaje/Anotación */
+.border {
+    border: 1px solid #2f2d2d;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #333;
+}
+
+/* Texto de totales */
+h6 {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+p, input {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.botones-container {
+    text-align: right; /* Alinea el contenido (botones) a la derecha */
+    margin-left: 60px;
+}
+
+/* Estilo para el botón de cerrar sesión */
+#logoutButton {
+    font-size: 1.25rem; /* Tamaño de la fuente del ícono dentro del botón */
+    background-color: #000000; /* Fondo oscuro para el botón */
+    color: white; /* Color del ícono dentro del botón */
+    border: none; /* Sin bordes */
+    padding: 0.375rem 0.75rem; /* Espaciado dentro del botón */
+    display: flex; /* Alinea el ícono dentro del botón */
+    align-items: center; /* Centra el ícono verticalmente */
+}
+
+/* Margen horizontal entre los elementos */
+#logoutButton, .notification-icon {
+    margin-left: 0.5rem; /* Separación entre íconos y botones */
+    margin-right: 0.5rem; /* Separación entre íconos y botones */
+}
+
+/* Opcional: Cambio de estilo al pasar el mouse sobre el botón */
+#logoutButton:hover {
+    background-color: #033ff3; /* Cambiar a un gris más oscuro al pasar el mouse */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+}
+
+/* Alinear el submenú con los demás elementos del sidebar */
+#clientesMenu {
+    margin-left: 0; /* Alinear el margen con los demás */
+    padding-left: 0; /* Eliminar relleno adicional */
+}
+
+/* Estilo para las opciones dentro del submenú */
+#clientesMenu .nav-link {
+    color: rgb(255, 255, 255);
+    font-size: 90%;
+}
+
+/* Estilo del ícono en la opción principal del submenú */
+.nav-item .nav-link {
+    display: flex;
+    text-align: left; /* Asegura alineación del texto */
+    align-items: left;
+}
+
